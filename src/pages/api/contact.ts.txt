@@ -1,0 +1,26 @@
+import type { NextApiRequest, NextApiResponse } from "next";
+
+type Body = {
+  name?: string;
+  email?: string;
+  message?: string;
+  company?: string;
+  website?: string; // honeypot
+};
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") return res.status(405).json({ ok: false });
+
+  const { name, email, message, company, website } = req.body as Body;
+
+  // honeypot: bots fill hidden field
+  if (website) return res.status(200).json({ ok: true });
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ ok: false, error: "Missing fields" });
+  }
+
+  // TODO: send to your email provider (Resend/SendGrid/Mailgun) OR store in Notion/Airtable.
+  // For now we just return ok to prove wiring works.
+  return res.status(200).json({ ok: true });
+}
