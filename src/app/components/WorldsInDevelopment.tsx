@@ -48,10 +48,7 @@ export default function WorldsInDevelopment() {
       </div>
 
       <div className="mt-4 text-xs text-black/60">
-        Tip: put images in <span className="font-medium">/public/images</span> and set each card’s{" "}
-        <span className="font-medium">image</span> prop (e.g.{" "}
-        <span className="font-medium">image=&quot;/images/worlds/cafe.jpg&quot;</span>).
-      </div>
+              </div>
     </section>
   );
 }

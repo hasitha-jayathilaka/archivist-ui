@@ -18,7 +18,7 @@ export default function Readiness() {
 
       <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-medium text-black/70">
         <CheckCircle2 className="h-4 w-4" />
-        Validated working prototypes with institutional demonstrations (TRL 6–7)
+        Validated working prototypes with institutional demonstrations (TRL 6-7)
       </div>
 
       <div className="mt-6 grid md:grid-cols-3 gap-4">

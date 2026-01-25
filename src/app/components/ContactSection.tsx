@@ -3,7 +3,13 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
 
-type RequestType = "demo" | "pilot" | "education" | "partnership" | "press" | "other";
+type RequestType =
+  | "demo"
+  | "pilot"
+  | "education"
+  | "partnership"
+  | "press"
+  | "other";
 
 const TYPE_COPY: Record<
   RequestType,
@@ -64,6 +70,30 @@ function normalizeType(raw: string | null): RequestType {
   return allowed.includes(t as RequestType) ? (t as RequestType) : "demo";
 }
 
+// Simple + reliable email validation
+function isValidEmail(email: string) {
+  // pragmatic email regex (good for forms, not over-strict)
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Phone validation: allow only + digits spaces () -
+// Require 7–15 digits total (E.164 typical max 15)
+function validatePhone(phone: string) {
+  if (!phone) return { ok: true, error: "" };
+
+  const allowedChars = /^[0-9+\-\s()]+$/;
+  if (!allowedChars.test(phone)) {
+    return { ok: false, error: "Phone can only include digits, +, spaces, (), and -." };
+  }
+
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15) {
+    return { ok: false, error: "Phone must contain 7–15 digits." };
+  }
+
+  return { ok: true, error: "" };
+}
+
 export default function ContactSection() {
   const [type, setType] = useState<RequestType>("demo");
   const copy = useMemo(() => TYPE_COPY[type], [type]);
@@ -77,23 +107,19 @@ export default function ContactSection() {
     email: "",
     org: "",
     country: "",
+    phone: "",
     message: "",
   });
 
-  // ✅ Reads request type from URL: /?type=demo#contact (no useSearchParams, no Suspense needed)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const readTypeFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
-      const urlType = normalizeType(params.get("type"));
-      setType(urlType);
+      setType(normalizeType(params.get("type")));
     };
 
-    // Initial read
     readTypeFromUrl();
-
-    // Handle user clicking different CTAs on the same page + back/forward navigation
     window.addEventListener("hashchange", readTypeFromUrl);
     window.addEventListener("popstate", readTypeFromUrl);
 
@@ -105,12 +131,43 @@ export default function ContactSection() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (loading) return;
+
     setLoading(true);
     setOk(null);
     setError("");
 
     try {
-      const payload = { ...form, type };
+      const payload = {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        org: form.org.trim(),
+        country: form.country.trim(),
+        phone: form.phone.trim(),
+        message: form.message.trim(),
+        type,
+      };
+
+      if (!payload.name || !payload.email || !payload.message) {
+        setOk(false);
+        setError("Please fill name, email, and message.");
+        return;
+      }
+
+      // ✅ Email validation
+      if (!isValidEmail(payload.email)) {
+        setOk(false);
+        setError("Please enter a valid email address.");
+        return;
+      }
+
+      // ✅ Phone validation (optional)
+      const phoneCheck = validatePhone(payload.phone);
+      if (!phoneCheck.ok) {
+        setOk(false);
+        setError(phoneCheck.error);
+        return;
+      }
 
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -118,16 +175,31 @@ export default function ContactSection() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json().catch(() => null);
+      const text = await res.text();
+      let data: any = null;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = null;
+      }
 
-      if (!res.ok) {
+      if (!res.ok || !data?.ok) {
         setOk(false);
-        setError(data?.error || "Submission failed. Please try again.");
+        setError(
+          data?.error || text || `Submission failed (HTTP ${res.status}).`
+        );
         return;
       }
 
       setOk(true);
-      setForm({ name: "", email: "", org: "", country: "", message: "" });
+      setForm({
+        name: "",
+        email: "",
+        org: "",
+        country: "",
+        phone: "",
+        message: "",
+      });
     } catch (err: any) {
       setOk(false);
       setError(err?.message || "Network error. Please try again.");
@@ -171,7 +243,7 @@ export default function ContactSection() {
 
           {/* Right */}
           <div className="lg:col-span-7">
-            <form onSubmit={onSubmit} className="grid gap-3">
+            <form onSubmit={onSubmit} className="grid gap-3" noValidate>
               <div>
                 <label className="text-xs text-black/60">Request type</label>
                 <select
@@ -196,13 +268,42 @@ export default function ContactSection() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
                 />
+
                 <input
                   className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-black/10"
                   placeholder="Email*"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
+                  spellCheck={false}
                   required
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="grid gap-1">
+                  <input
+                    className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-black/10"
+                    placeholder="Mobile number (optional)"
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    inputMode="tel"
+                    autoComplete="tel"
+                    spellCheck={false}
+                  />
+                  <div className="text-[11px] text-black/45 pl-1">
+                    Example: +94 77 123 4567
+                  </div>
+                </div>
+
+                <input
+                  className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-black/10"
+                  placeholder="Country (optional)"
+                  value={form.country}
+                  onChange={(e) => setForm({ ...form, country: e.target.value })}
+                  autoComplete="country-name"
                 />
               </div>
 
@@ -212,12 +313,13 @@ export default function ContactSection() {
                   placeholder="Organization (optional)"
                   value={form.org}
                   onChange={(e) => setForm({ ...form, org: e.target.value })}
+                  autoComplete="organization"
                 />
-                <input
-                  className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-black/10"
-                  placeholder="Country (optional)"
-                  value={form.country}
-                  onChange={(e) => setForm({ ...form, country: e.target.value })}
+
+                {/* ✅ spacer: prevents “clickable empty area” */}
+                <div
+                  aria-hidden="true"
+                  className="hidden sm:block pointer-events-none select-none"
                 />
               </div>
 
@@ -227,6 +329,7 @@ export default function ContactSection() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 required
+                minLength={10}
               />
 
               <button

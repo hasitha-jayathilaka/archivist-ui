@@ -22,7 +22,7 @@ export default function FooterContact() {
             <div className="mt-4 flex flex-wrap gap-2 text-xs text-black/60">
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
                 <CheckCircle2 className="h-4 w-4" />
-                TRL 6–7
+                TRL 6-7
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
                 <Layers className="h-4 w-4" />
