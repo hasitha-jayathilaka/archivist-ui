@@ -2,8 +2,18 @@ import "./globals.css";
 import Script from "next/script";
 
 export const metadata = {
-  title: "Archivist",
-  description: "Archivist Into the Artverse™",
+  title: {
+    default: "Archivist - Immersive History & Art Worlds",
+    template: "%s - Archivist",
+  },
+  description:
+    "Archivist builds historically accurate, immersive worlds for education, culture, and institutions - spanning art history, heritage, and storytelling.",
+  openGraph: {
+    title: "Archivist - Immersive History & Art Worlds",
+    description:
+      "Historically accurate immersive worlds for education, culture, and institutions - across art history, heritage, and storytelling.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

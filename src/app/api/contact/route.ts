@@ -3,8 +3,6 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function esc(s: string) {
   return s.replace(/[&<>"']/g, (c) => {
     switch (c) {
@@ -33,7 +31,10 @@ function validatePhone(phone: string) {
 
   const allowedChars = /^[0-9+\-\s()]+$/;
   if (!allowedChars.test(phone)) {
-    return { ok: false, error: "Phone can only include digits, +, spaces, (), and -." };
+    return {
+      ok: false,
+      error: "Phone can only include digits, +, spaces, (), and -.",
+    };
   }
 
   const digits = phone.replace(/\D/g, "");
@@ -80,11 +81,13 @@ export async function POST(req: Request) {
       );
     }
 
+    // ✅ Read env INSIDE the handler (build-safe)
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
     const CONTACT_TO = process.env.CONTACT_TO;
     const CONTACT_FROM = process.env.CONTACT_FROM;
-    const SITE_NAME = process.env.SITE_NAME ?? "Archivist";
+    const SITE_NAME = process.env.SITE_NAME ?? "Archivist Into the Artverse™";
 
-    if (!process.env.RESEND_API_KEY || !CONTACT_TO || !CONTACT_FROM) {
+    if (!RESEND_API_KEY || !CONTACT_TO || !CONTACT_FROM) {
       return NextResponse.json(
         {
           ok: false,
@@ -94,6 +97,8 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    const resend = new Resend(RESEND_API_KEY);
 
     const safe = {
       name: esc(name),
@@ -110,7 +115,7 @@ export async function POST(req: Request) {
       from: CONTACT_FROM,
       to: email,
       cc: CONTACT_TO,
-      subject: `We received your message - Archivist Into the Artverse™`,
+      subject: "We received your message - Archivist Into the Artverse™",
       replyTo: email,
       html: `
         <div style="font-family: ui-sans-serif, system-ui; line-height:1.6; color:#111">
