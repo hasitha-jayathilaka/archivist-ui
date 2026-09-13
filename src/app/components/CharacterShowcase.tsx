@@ -3,7 +3,7 @@
 import React, { Suspense, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Html, Stage } from "@react-three/drei";
-import { RotateCw, Lock } from "lucide-react";
+import { RotateCw, Lock, Play } from "lucide-react";
 
 /* ---------- Small UI tags ---------- */
 
@@ -60,6 +60,7 @@ function Loader() {
 
 export default function CharacterShowcase() {
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [showClip, setShowClip] = useState(false);
 
   // ASCII-only titles to avoid Windows encoding corruption issues
   const refImages = useMemo(
@@ -145,6 +146,40 @@ export default function CharacterShowcase() {
                 <span>
                   Evidence-bound reconstruction: proportions and features constrained by documented primary visual sources.
                 </span>
+              </div>
+
+              {/* In-engine turnaround clip */}
+              <div className="mt-4 relative overflow-hidden rounded-2xl border border-black/10 bg-black shadow-sm">
+                {showClip ? (
+                  <div className="aspect-video">
+                    <iframe
+                      className="h-full w-full"
+                      src="https://www.youtube-nocookie.com/embed/WA9ymcwiiRU?autoplay=1&rel=0&modestbranding=1"
+                      title="Joseph Ginoux - in-engine turnaround"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setShowClip(true)}
+                    className="group relative block w-full aspect-video"
+                  >
+                    <img
+                      src="/images/references/ginoux-01.jpg"
+                      alt="Joseph Ginoux in-engine turnaround"
+                      className="h-full w-full object-cover opacity-70 group-hover:opacity-80 transition"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition">
+                      <div className="h-12 w-12 rounded-full bg-white/90 flex items-center justify-center shadow-sm">
+                        <Play className="h-5 w-5 ml-0.5" />
+                      </div>
+                    </div>
+                  </button>
+                )}
+                <div className="px-4 py-2 text-xs text-white/70 bg-black">
+                  Joseph Ginoux - in-engine capture
+                </div>
               </div>
             </div>
 

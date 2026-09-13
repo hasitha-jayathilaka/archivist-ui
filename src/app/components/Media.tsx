@@ -1,7 +1,7 @@
 "use client";
 
 /*
-  "As featured on" — press logos + clickable headlines, styled the same
+  "As featured on" - press logos + clickable headlines, styled the same
   way as the Press and Media Features section on hasithajayathilaka.com.
 
   Drop logo files into /public/images/press/ as:

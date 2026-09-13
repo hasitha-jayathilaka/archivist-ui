@@ -2,7 +2,7 @@
 
 /*
   Compact membership badges (smaller than the Partners/Supporters cards
-  by design — this section is meant to read as a quick badge strip).
+  by design - this section is meant to read as a quick badge strip).
 
   Logo files expected at:
     /public/images/memberships/lexra.png

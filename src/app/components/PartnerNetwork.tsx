@@ -1,11 +1,11 @@
 "use client";
 
 /*
-  Product-relevant partner rail only — marks that help a buyer trust
+  Product-relevant partner rail only - marks that help a buyer trust
   THIS product (hardware it runs on, venue/deployment validation).
 
   Company-level partners and supporters (Nanotek, NIA, DIMO, The ROI
-  Firm, Linseed) are intentionally NOT here — they describe Yellow
+  Firm, Linseed) are intentionally NOT here - they describe Yellow
   House Productions as a company, not why Archivist is safe to deploy
   in a museum, classroom, or airport. They're held in StudioGroup.tsx
   as a small footer-level credit line until a separate Yellow House
@@ -30,7 +30,7 @@ const PARTNERS: Partner[] = [
   },
   {
     name: "LEXRA",
-    role: "Location-Based XR Association — operator member",
+    role: "Location-Based XR Association - operator member",
     logo: "/images/memberships/lexra.png",
   },
 ];

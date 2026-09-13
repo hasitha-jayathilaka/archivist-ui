@@ -39,7 +39,7 @@ function validatePhone(phone: string) {
 
   const digits = phone.replace(/\D/g, "");
   if (digits.length < 7 || digits.length > 15) {
-    return { ok: false, error: "Phone must contain 7–15 digits." };
+    return { ok: false, error: "Phone must contain 7-15 digits." };
   }
 
   return { ok: true, error: "" };

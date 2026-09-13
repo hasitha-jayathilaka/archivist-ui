@@ -22,7 +22,7 @@ export default function Institutions() {
         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">One world. Five doors.</h2>
         <p className="mt-2 text-sm text-black/70 leading-relaxed">
           Archivist is one evidence-bound reconstruction, deployed through several professional
-          pathways — plus a public edition for players.
+          pathways - plus a public edition for players.
         </p>
       </div>
 

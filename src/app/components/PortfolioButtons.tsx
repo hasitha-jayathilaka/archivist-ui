@@ -14,7 +14,7 @@ const buttons: Btn[] = [
     href: "https://www.youtube.com/",
     primary: true,
     external: true,
-    note: "2–3 mins",
+    note: "2-3 mins",
   },
   { label: "View Case Studies", href: "/case-studies", note: "Proof of work" },
   { label: "Project Deck (PDF)", href: "/deck.pdf", external: true, note: "Investor-ready" },

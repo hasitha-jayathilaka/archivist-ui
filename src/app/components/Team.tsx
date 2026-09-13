@@ -74,7 +74,7 @@ export default function Team() {
 
       <div className="mt-6 grid sm:grid-cols-2 gap-4 max-w-3xl">
         <FounderCard
-          name="Hasitha"
+          name="Hasitha Jayathilaka"
           role="Founder"
           image="/images/team/hasitha.jpg"
           desc="Founder of Archivist Into the Artverse™. Leads vision, research direction, and institutional partnerships."
@@ -85,7 +85,7 @@ export default function Team() {
         />
 
         <FounderCard
-          name="Prabha"
+          name="Prabha Hewage"
           role="Co-founder"
           image="/images/team/prabha.jpg"
           desc="Co-founder. Oversees creative direction and artistic coherence across the reconstructed world."

@@ -7,7 +7,7 @@ import { FileText, ArrowUpRight } from "lucide-react";
   Only papers about THIS product (the Archivist reconstruction method)
   live here. ITRA Zeitgeist 2026 (Helixra/traditional games) and the
   SAARC Cultural Centre paper (Linseed/Helixra attribution) are about
-  Yellow House Productions' other work, not Archivist — they belong on
+  Yellow House Productions' other work, not Archivist - they belong on
   a future Yellow House Productions site instead.
 
   Cover image: drop an A4-ratio image into /public/images/research/ as:
@@ -16,7 +16,7 @@ import { FileText, ArrowUpRight } from "lucide-react";
   kept under ~500KB. Until the file exists, the card just shows a
   placeholder icon instead of breaking.
 
-  Add an `abstract` field once you have the real abstract text — the
+  Add an `abstract` field once you have the real abstract text - the
   paragraph only renders when it's present.
 */
 
@@ -50,7 +50,7 @@ function PaperCard({ paper }: { paper: Paper }) {
       <div className="aspect-[1/1.414] bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center overflow-hidden">
         <img
           src={paper.image}
-          alt={`${paper.title} — cover`}
+          alt={`${paper.title} - cover`}
           className="h-full w-full object-cover"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -106,8 +106,8 @@ export default function Research() {
         Research & publications
       </h2>
       <p className="mt-2 text-sm text-black/70 max-w-2xl">
-        Peer-reviewed and conference-presented papers from The Archivist and Helixra&apos;s research
-        programme.
+        Peer-reviewed and conference-presented research behind Archivist&apos;s reconstruction
+        methodology.
       </p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

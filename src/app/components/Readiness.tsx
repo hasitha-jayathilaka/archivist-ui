@@ -26,14 +26,6 @@ export default function Readiness() {
         <Stat title="Interactive prototype running" desc="Unreal Engine demo ready for presentations." />
         <Stat title="Institutional demos underway" desc="Prepared for cultural partnerships and showcases." />
       </div>
-
-      <div className="mt-6 rounded-2xl border border-black/10 bg-white shadow-sm p-5">
-        <div className="text-sm font-semibold">Why game technology?</div>
-        <p className="mt-2 text-sm text-black/70 leading-relaxed">
-          Built using game engines to achieve scale, accessibility, and engagement -{" "}
-          <span className="font-medium">not positioned as a traditional entertainment-only game</span>.
-        </p>
-      </div>
     </section>
   );
 }

@@ -31,7 +31,7 @@ type UpdateItem = {
 /*
   TODO: add hrefs (announcement posts, articles, press links) once
   available for each item below, and keep adding new entries here as
-  updates happen — most recent first.
+  updates happen - most recent first.
 */
 const UPDATES: UpdateItem[] = [
   {
@@ -67,7 +67,7 @@ const UPDATES: UpdateItem[] = [
     tag: "Membership",
     title: "Joined LEXRA",
     body:
-      "Yellow House Productions joined the Location-Based XR Association (LEXRA) as an operator member — the first operator from Sri Lanka to join.",
+      "Yellow House Productions joined the Location-Based XR Association (LEXRA) as an operator member - the first operator from Sri Lanka to join.",
   },
   {
     date: "2026-06-11",

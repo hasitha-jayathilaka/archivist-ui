@@ -95,7 +95,7 @@ function isValidEmail(email: string) {
 }
 
 // Phone validation: allow only + digits spaces () -
-// Require 7–15 digits total (E.164 typical max 15)
+// Require 7-15 digits total (E.164 typical max 15)
 function validatePhone(phone: string) {
   if (!phone) return { ok: true, error: "" };
 
@@ -106,7 +106,7 @@ function validatePhone(phone: string) {
 
   const digits = phone.replace(/\D/g, "");
   if (digits.length < 7 || digits.length > 15) {
-    return { ok: false, error: "Phone must contain 7–15 digits." };
+    return { ok: false, error: "Phone must contain 7-15 digits." };
   }
 
   return { ok: true, error: "" };

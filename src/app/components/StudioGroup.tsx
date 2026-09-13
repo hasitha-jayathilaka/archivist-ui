@@ -5,8 +5,8 @@
   (as opposed to product-relevant partners, which live in
   PartnerNetwork.tsx as the logo rail under the hero).
 
-  This is intentionally minimal — text only, no logos, no descriptions
-  — per the site-split plan: full company story (Nanotek, NIA, DIMO,
+  This is intentionally minimal - text only, no logos, no descriptions
+  - per the site-split plan: full company story (Nanotek, NIA, DIMO,
   The ROI Firm, Linseed, press, studio memberships) belongs on a future
   standalone Yellow House Productions site. Once that site exists,
   swap the plain text below for a real link.
