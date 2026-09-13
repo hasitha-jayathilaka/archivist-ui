@@ -28,27 +28,53 @@ type UpdateItem = {
 
 /* ---------- Data (edit these) ---------- */
 
+/*
+  TODO: add hrefs (announcement posts, articles, press links) once
+  available for each item below, and keep adding new entries here as
+  updates happen — most recent first.
+*/
 const UPDATES: UpdateItem[] = [
+  {
+    date: "2026-09-16",
+    tag: "Event",
+    title: "SAARC Cultural Centre workshop",
+    body:
+      "Presented \"Fair Attribution, Shared Benefit\" to SAARC delegates, combining Linseed's attribution infrastructure with Helixra as a working proof point.",
+  },
+  {
+    date: "2026-09-08",
+    tag: "Research",
+    title: "Paper presented at ICNATLIB 2026",
+    body:
+      "Presented The Archivist's reconstruction methodology at the National Library of Sri Lanka's 5th International Research Conference.",
+  },
+  {
+    date: "2026-08-05",
+    tag: "Research",
+    title: "Paper published and presented at ITRA Zeitgeist 2026",
+    body:
+      "Helixra's paper on preservation and modernisation of traditional Sri Lankan board games was peer-reviewed and presented in Augsburg, Germany.",
+  },
+  {
+    date: "2026-07-16",
+    tag: "Partnership",
+    title: "Nanotek named official technology partner",
+    body:
+      "Nanotek joined as the official technology partner supporting the studio's hardware and technical infrastructure.",
+  },
+  {
+    date: "2026-06-24",
+    tag: "Membership",
+    title: "Joined LEXRA",
+    body:
+      "Yellow House Productions joined the Location-Based XR Association (LEXRA) as an operator member — the first operator from Sri Lanka to join.",
+  },
   {
     date: "2026-01-18",
     tag: "Build",
     title: "Joseph Ginoux character reconstruction (Arles, 1888)",
     body:
       "Added an evidence-bound 3D character showcase built from primary painting references, with an interactive rotatable model and reference panel.",
-  },
-  {
-    date: "2026-01-12",
-    tag: "Worlds",
-    title: "Worlds in Development tiles updated",
-    body:
-      "Refined the Arles district tiles to focus on institutional deployment zones and public exploration, with clearer naming and improved layout.",
-  },
-  {
-    date: "2026-01-06",
-    tag: "Platform",
-    title: "Institution-first homepage architecture",
-    body:
-      "Restructured the homepage into modular components (Hero, Institutions, Education, Readiness, Team, Partnerships) for easier iteration and updates.",
   },
 ];
 
@@ -96,14 +122,14 @@ function UpdateCard({ item }: { item: UpdateItem }) {
 
 export default function SocialUpdates() {
   return (
-    <section id="social" className="mx-auto max-w-6xl px-4 py-12">
+    <section id="news" className="mx-auto max-w-6xl px-4 py-12">
       <div className="flex items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-            Social updates
+            News
           </h2>
           <p className="mt-2 text-sm text-black/70 max-w-2xl">
-            Ongoing progress notes, releases, and field updates from the studio.
+            Recent updates, research milestones, and partnership news from the studio.
           </p>
         </div>
 

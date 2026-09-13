@@ -8,6 +8,12 @@ import CharacterShowcase from "./components/CharacterShowcase";
 import PublicRelease from "./components/PublicRelease";
 import Readiness from "./components/Readiness";
 import Team from "./components/Team";
+import Research from "./components/Research";
+import PartnerNetwork from "./components/PartnerNetwork";
+import Supporters from "./components/Supporters";
+import Memberships from "./components/Memberships";
+import Media from "./components/Media";
+import SocialUpdates from "./components/SocialUpdates";
 import Partnerships from "./components/Partnerships";
 import ContactSection from "./components/ContactSection";
 import FooterContact from "./components/FooterContact";
@@ -28,6 +34,12 @@ export default function Page() {
       <PublicRelease />
       <Readiness />
       <Team />
+      <Research />
+      <PartnerNetwork />
+      <Supporters />
+      <Memberships />
+      <Media />
+      <SocialUpdates />
       <Partnerships />
       <ContactSection />
       <FooterContact />

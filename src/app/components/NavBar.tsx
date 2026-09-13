@@ -50,6 +50,12 @@ export default function NavBar() {
           <a className="hover:text-black" href="#readiness">
             Readiness
           </a>
+          <a className="hover:text-black" href="#research">
+            Research
+          </a>
+          <a className="hover:text-black" href="#news">
+            News
+          </a>
         </nav>
 
         {/* CTA */}
