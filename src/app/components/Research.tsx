@@ -4,16 +4,20 @@ import { FileText, ArrowUpRight } from "lucide-react";
 
 /* ---------- Data (edit these) ---------- */
 /*
-  Cover images: drop A4-ratio images into /public/images/research/ as:
-    - icnatlib.jpg
-    - itra.jpg
-    - saarc.jpg
-  Recommended export size: ~1000x1414px (A4 ratio, 1:1.414), JPG or PNG,
-  kept under ~500KB each for load speed. Until a file exists, the card
-  just shows a placeholder icon instead of breaking.
+  Only papers about THIS product (the Archivist reconstruction method)
+  live here. ITRA Zeitgeist 2026 (Helixra/traditional games) and the
+  SAARC Cultural Centre paper (Linseed/Helixra attribution) are about
+  Yellow House Productions' other work, not Archivist — they belong on
+  a future Yellow House Productions site instead.
 
-  Add an `abstract` field to any entry below once you have the real
-  abstract text — the paragraph only renders when it's present.
+  Cover image: drop an A4-ratio image into /public/images/research/ as:
+    - icnatlib.jpg
+  Recommended export size: ~1000x1414px (A4 ratio, 1:1.414), JPG or PNG,
+  kept under ~500KB. Until the file exists, the card just shows a
+  placeholder icon instead of breaking.
+
+  Add an `abstract` field once you have the real abstract text — the
+  paragraph only renders when it's present.
 */
 
 type Paper = {
@@ -35,25 +39,6 @@ const PAPERS: Paper[] = [
       "From Archive to Atmosphere: A Multi-Source Methodology for Reconstructing Documentary Cultural Heritage in Immersive Virtual Reality",
     image: "/images/research/icnatlib.jpg",
     href: "https://www.natlib.lk/ICNATLIB2026/",
-  },
-  {
-    venue: "ITRA Zeitgeist 2026",
-    location: "Augsburg, Germany",
-    date: "5–7 August 2026",
-    title:
-      "Playing Against Forgetting: Digital Archiving of Sri Lanka's Traditional Games as Living Cultural Heritage",
-    image: "/images/research/itra.jpg",
-    href: "https://itratoyresearch.org/2026conference",
-  },
-  {
-    venue: "SAARC Cultural Centre",
-    location:
-      "Workshop on Promoting Digital Technology for Preserving Cultural Heritage, Colombo (hybrid)",
-    date: "16–18 September 2026",
-    title:
-      "Fair Attribution, Shared Benefit: An Infrastructure Model for Digitising Traditional Knowledge and Cultural Expressions",
-    image: "/images/research/saarc.jpg",
-    href: "https://saarcculture.org/our_activities/%F0%9D%90%92%F0%9D%90%80%F0%9D%90%80%F0%9D%90%91%F0%9D%90%82-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%A6%F0%9D%90%A8%F0%9D%90%AD%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%A0-%F0%9D%90%83%F0%9D%90%A2/",
   },
 ];
 

@@ -15,6 +15,10 @@ export default function FooterContact() {
               Research-led cultural worlds built for institutions - with a public exploration release.
             </p>
 
+            <div className="mt-2 text-xs text-black/50">
+              A title of Yellow House Productions.
+            </div>
+
             <div className="mt-4 text-sm text-black/70">
               Email: <span className="font-medium">info@thearchivistgame.art</span>
             </div>
@@ -39,7 +43,7 @@ export default function FooterContact() {
           <div className="md:col-span-6">
             <div className="grid grid-cols-2 gap-3 text-sm">
               <a className="text-black/70 hover:text-black" href="#institutional">
-                Platform
+                Doors
               </a>
               <a className="text-black/70 hover:text-black" href="#education">
                 Education
@@ -47,11 +51,11 @@ export default function FooterContact() {
               <a className="text-black/70 hover:text-black" href="#readiness">
                 Readiness (TRL)
               </a>
+              <a className="text-black/70 hover:text-black" href="#research">
+                Research
+              </a>
               <a className="text-black/70 hover:text-black" href="#team">
                 Team
-              </a>
-              <a className="text-black/70 hover:text-black" href="#partners">
-                Partnerships
               </a>
               <a className="text-black/70 hover:text-black" href="/?type=demo#contact">
                 Request Demo

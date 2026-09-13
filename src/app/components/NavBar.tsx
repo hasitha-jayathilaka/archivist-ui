@@ -31,7 +31,7 @@ export default function NavBar() {
               Archivist Into the Artverse™
             </div>
             <div className="text-xs text-black/60">
-              Culture-Tech • EdTech • VR • Public Game Release
+              Institutions • Education • Destinations • IFE • Public Edition
             </div>
           </div>
         </div>
@@ -39,22 +39,13 @@ export default function NavBar() {
         {/* Nav links */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-black/70">
           <a className="hover:text-black inline-flex items-center gap-1" href="#institutional">
-            Platform <ChevronDown className="h-4 w-4 opacity-70" />
-          </a>
-          <a className="hover:text-black" href="#institutional">
-            Institutions
-          </a>
-          <a className="hover:text-black" href="#team">
-            Team
+            Doors <ChevronDown className="h-4 w-4 opacity-70" />
           </a>
           <a className="hover:text-black" href="#readiness">
             Readiness
           </a>
           <a className="hover:text-black" href="#research">
             Research
-          </a>
-          <a className="hover:text-black" href="#news">
-            News
           </a>
         </nav>
 

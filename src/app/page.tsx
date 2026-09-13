@@ -1,5 +1,6 @@
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
+import PartnerNetwork from "./components/PartnerNetwork";
 import Pillars from "./components/Pillars";
 import Institutions from "./components/Institutions";
 import Education from "./components/Education";
@@ -7,13 +8,9 @@ import WorldsInDevelopment from "./components/WorldsInDevelopment";
 import CharacterShowcase from "./components/CharacterShowcase";
 import PublicRelease from "./components/PublicRelease";
 import Readiness from "./components/Readiness";
-import Team from "./components/Team";
 import Research from "./components/Research";
-import PartnerNetwork from "./components/PartnerNetwork";
-import Memberships from "./components/Memberships";
-import Media from "./components/Media";
-import SocialUpdates from "./components/SocialUpdates";
-import Partnerships from "./components/Partnerships";
+import Team from "./components/Team";
+import StudioGroup from "./components/StudioGroup";
 import ContactSection from "./components/ContactSection";
 import FooterContact from "./components/FooterContact";
 
@@ -25,6 +22,7 @@ export default function Page() {
     >
       <NavBar />
       <Hero />
+      <PartnerNetwork />
       <Pillars />
       <Institutions />
       <Education />
@@ -32,13 +30,9 @@ export default function Page() {
       <CharacterShowcase />
       <PublicRelease />
       <Readiness />
-      <Team />
       <Research />
-      <PartnerNetwork />
-      <Memberships />
-      <Media />
-      <SocialUpdates />
-      <Partnerships />
+      <Team />
+      <StudioGroup />
       <ContactSection />
       <FooterContact />
     </div>

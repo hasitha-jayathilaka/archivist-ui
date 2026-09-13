@@ -1,25 +1,24 @@
 "use client";
 
 /*
-  Merged Partners, Supporters, and ecosystem/sister companies into one
-  section, in this order: Pico, Nanotek, NIA, DIMO, The ROI Firm, Linseed.
+  Product-relevant partner rail only — marks that help a buyer trust
+  THIS product (hardware it runs on, venue/deployment validation).
+
+  Company-level partners and supporters (Nanotek, NIA, DIMO, The ROI
+  Firm, Linseed) are intentionally NOT here — they describe Yellow
+  House Productions as a company, not why Archivist is safe to deploy
+  in a museum, classroom, or airport. They're held in StudioGroup.tsx
+  as a small footer-level credit line until a separate Yellow House
+  Productions site exists to carry that story properly.
 
   Logo files expected at:
     /public/images/partners/pico.png
-    /public/images/partners/nanotek.png
-    /public/images/supporters/nia.png
-    /public/images/supporters/dimo.png
-    /public/images/partners/roi-firm.png        (should already exist)
-    /public/images/partners/linseed.png         (TODO: add this one — see note below)
-
-  Until a given logo file exists, that card falls back to showing the
-  name as text instead of breaking.
+    /public/images/memberships/lexra.png   (existing file, reused here)
 */
 
 type Partner = {
   name: string;
   role: string;
-  desc: string;
   logo: string;
 };
 
@@ -28,67 +27,35 @@ const PARTNERS: Partner[] = [
     name: "Pico",
     role: "Enterprise VR hardware and development support",
     logo: "/images/partners/pico.png",
-    desc:
-      "Pico supplies Yellow House Productions with Pico 4 Ultra Enterprise devices and development support, and is confirmed as the preferred launch partner for Archivist titles following Arles.",
   },
   {
-    name: "Nanotek",
-    role: "Official Technology Partner",
-    logo: "/images/partners/nanotek.png",
-    desc:
-      "Nanotek is the official technology partner supporting Yellow House Productions' hardware and technical infrastructure.",
-  },
-  {
-    name: "National Innovation Agency (NIA)",
-    role: "Supporter · WIPO TISC Center",
-    logo: "/images/supporters/nia.png",
-    desc:
-      "The National Innovation Agency, a WIPO Technology and Innovation Support Center (TISC), supports Yellow House Productions' innovation pipeline. Yellow House Productions is a recipient of the NIA Innovation Voucher for commercialisation.",
-  },
-  {
-    name: "DIMO",
-    role: "Sponsor · Helixra R&D",
-    logo: "/images/supporters/dimo.png",
-    desc: "DIMO supports research and development for Helixra.",
-  },
-  {
-    name: "The ROI Firm",
-    role: "Development & Production Partner",
-    logo: "/images/partners/roi-firm.png",
-    desc:
-      "The ROI Firm supports Archivist Into the Artverse™ through production coordination, technical development workflows, and access to a global network of creative and technical specialists engaged on a project-by-project basis.",
-  },
-  {
-    name: "Linseed",
-    role: "Sister Company · IP Infrastructure",
-    logo: "/images/partners/linseed.png",
-    desc:
-      "Linseed is Yellow House Productions' sister company, providing the IP licensing and attribution infrastructure behind the studio's cultural content and institutional partnerships.",
+    name: "LEXRA",
+    role: "Location-Based XR Association — operator member",
+    logo: "/images/memberships/lexra.png",
   },
 ];
 
-function PartnerLogoCard({ partner }: { partner: Partner }) {
+function PartnerLogo({ partner }: { partner: Partner }) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
-      <div className="aspect-[16/10] bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center">
+    <div className="flex items-center gap-3">
+      <div className="h-10 w-16 flex items-center justify-center grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition">
         <img
           src={partner.logo}
           alt={`${partner.name} logo`}
-          className="max-h-[70%] max-w-[70%] object-contain"
+          className="max-h-full max-w-full object-contain"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
             const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
             if (fallback) fallback.style.display = "block";
           }}
         />
-        <div style={{ display: "none" }} className="text-sm font-medium text-black/50">
+        <div style={{ display: "none" }} className="text-xs font-medium text-black/50">
           {partner.name}
         </div>
       </div>
-      <div className="p-5">
-        <div className="text-sm font-semibold">{partner.name}</div>
-        <div className="mt-1 text-xs text-black/60">{partner.role}</div>
-        <p className="mt-3 text-sm text-black/70 leading-relaxed">{partner.desc}</p>
+      <div className="hidden sm:block leading-tight">
+        <div className="text-xs font-semibold">{partner.name}</div>
+        <div className="text-[11px] text-black/50">{partner.role}</div>
       </div>
     </div>
   );
@@ -96,16 +63,11 @@ function PartnerLogoCard({ partner }: { partner: Partner }) {
 
 export default function PartnerNetwork() {
   return (
-    <section id="partner-network" className="mx-auto max-w-6xl px-4 py-12">
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Partners & supporters</h2>
-      <p className="mt-2 text-sm text-black/70 max-w-2xl">
-        Hardware, technology, institutional, and sister-company relationships supporting the
-        studio.
-      </p>
-
-      <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <section id="partner-network" className="mx-auto max-w-6xl px-4 py-6">
+      <div className="flex flex-wrap items-center gap-x-10 gap-y-4 border-y border-black/10 py-5">
+        <span className="text-xs uppercase tracking-widest text-black/40">Built with</span>
         {PARTNERS.map((p) => (
-          <PartnerLogoCard key={p.name} partner={p} />
+          <PartnerLogo key={p.name} partner={p} />
         ))}
       </div>
     </section>

@@ -7,6 +7,8 @@ type RequestType =
   | "demo"
   | "pilot"
   | "education"
+  | "destination"
+  | "ife"
   | "partnership"
   | "press"
   | "other";
@@ -36,6 +38,20 @@ const TYPE_COPY: Record<
     messagePlaceholder:
       "Age group / course, learning goals, class size, delivery format (lab, headsets, desktop)…",
   },
+  destination: {
+    title: "Destination marketing inquiry",
+    helper:
+      "Cities, tourism boards, and DMOs: tell us about your destination and audience. We'll propose a pre-visit or on-site showcase.",
+    messagePlaceholder:
+      "Destination/region, target audience, pre-visit vs on-site, timeline…",
+  },
+  ife: {
+    title: "IFE / travel media inquiry",
+    helper:
+      "Airlines, lounges, and travel platforms: tell us your format and slot length. We'll propose a cultural segment from the same world.",
+    messagePlaceholder:
+      "Platform (IFE / lounge / app), format, segment length, timeline…",
+  },
   partnership: {
     title: "Partnership inquiry",
     helper:
@@ -63,6 +79,8 @@ function normalizeType(raw: string | null): RequestType {
     "demo",
     "pilot",
     "education",
+    "destination",
+    "ife",
     "partnership",
     "press",
     "other",
@@ -254,6 +272,8 @@ export default function ContactSection() {
                   <option value="demo">Institutional demo</option>
                   <option value="pilot">Pilot scope</option>
                   <option value="education">Education pilot</option>
+                  <option value="destination">Destination marketing</option>
+                  <option value="ife">IFE / travel media</option>
                   <option value="partnership">Partnership</option>
                   <option value="press">Press / media</option>
                   <option value="other">Other</option>

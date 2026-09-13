@@ -3,7 +3,6 @@ import {
   Layers,
   Building2,
   GraduationCap,
-  Gamepad2,
   ChevronDown,
 } from "lucide-react";
 
@@ -21,17 +20,16 @@ export default function Hero() {
             </div>
 
             <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
-              Heritage becomes{" "}
-              <span className="underline decoration-black/20">walkable</span> - for
-              institutions and the public.
+              Heritage you can{" "}
+              <span className="underline decoration-black/20">walk</span> - for
+              institutions, classrooms, destinations, and players.
             </h1>
 
             <p className="mt-4 text-base md:text-lg text-black/70 leading-relaxed max-w-xl">
-              A <span className="font-medium">Culture-Tech & EdTech platform</span>{" "}
-              that reconstructs historically accurate environments from paintings,
-              letters, maps and archives - deployable by{" "}
+              A <span className="font-medium">research-led cultural world</span>{" "}
+              reconstructed from paintings, letters, maps and archives - deployable by{" "}
               <span className="font-medium">
-                museums, universities and tourism bodies
+                museums, universities, tourism boards, and travel platforms
               </span>
               , and also released as a{" "}
               <span className="font-medium">
@@ -61,15 +59,14 @@ export default function Hero() {
             <div className="mt-5 flex flex-wrap gap-2 text-xs text-black/60">
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
                 <Building2 className="h-4 w-4" />
-                Museums • Archives • Cities
+                Institutions • Education
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
                 <GraduationCap className="h-4 w-4" />
-                Universities • Schools
+                Destinations • IFE
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2">
-                <Gamepad2 className="h-4 w-4" />
-                Public Game Release
+                Public edition
               </span>
             </div>
 
