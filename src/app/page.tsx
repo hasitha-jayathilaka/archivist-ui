@@ -10,7 +10,6 @@ import Readiness from "./components/Readiness";
 import Team from "./components/Team";
 import Research from "./components/Research";
 import PartnerNetwork from "./components/PartnerNetwork";
-import Supporters from "./components/Supporters";
 import Memberships from "./components/Memberships";
 import Media from "./components/Media";
 import SocialUpdates from "./components/SocialUpdates";
@@ -36,7 +35,6 @@ export default function Page() {
       <Team />
       <Research />
       <PartnerNetwork />
-      <Supporters />
       <Memberships />
       <Media />
       <SocialUpdates />

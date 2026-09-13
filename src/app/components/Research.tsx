@@ -12,13 +12,8 @@ import { FileText, ArrowUpRight } from "lucide-react";
   kept under ~500KB each for load speed. Until a file exists, the card
   just shows a placeholder icon instead of breaking.
 
-  TODO: paste the actual abstract paragraph for each paper below —
-  currently only titles and event links are filled in.
-
-  Note: the venue/title pairs below were re-matched to the event links
-  based on domain (natlib.lk -> ICNATLIB, saarcculture.org -> SAARC) —
-  the titles/links you sent were paired the other way round. Flip them
-  back if that assumption was wrong.
+  Add an `abstract` field to any entry below once you have the real
+  abstract text — the paragraph only renders when it's present.
 */
 
 type Paper = {
@@ -26,7 +21,7 @@ type Paper = {
   location: string;
   date: string;
   title: string;
-  abstract: string;
+  abstract?: string;
   image: string;
   href?: string;
 };
@@ -38,7 +33,6 @@ const PAPERS: Paper[] = [
     date: "8 September 2026",
     title:
       "From Archive to Atmosphere: A Multi-Source Methodology for Reconstructing Documentary Cultural Heritage in Immersive Virtual Reality",
-    abstract: "TODO: paste the accepted ICNATLIB 2026 abstract here.",
     image: "/images/research/icnatlib.jpg",
     href: "https://www.natlib.lk/ICNATLIB2026/",
   },
@@ -48,7 +42,6 @@ const PAPERS: Paper[] = [
     date: "5–7 August 2026",
     title:
       "Playing Against Forgetting: Digital Archiving of Sri Lanka's Traditional Games as Living Cultural Heritage",
-    abstract: "TODO: paste the peer-reviewed ITRA Zeitgeist 2026 abstract here.",
     image: "/images/research/itra.jpg",
     href: "https://itratoyresearch.org/2026conference",
   },
@@ -59,8 +52,6 @@ const PAPERS: Paper[] = [
     date: "16–18 September 2026",
     title:
       "Fair Attribution, Shared Benefit: An Infrastructure Model for Digitising Traditional Knowledge and Cultural Expressions",
-    abstract:
-      "TODO: paste the SAARC session abstract here (Linseed's attribution/benefit-sharing infrastructure, with Helixra as the working proof point).",
     image: "/images/research/saarc.jpg",
     href: "https://saarcculture.org/our_activities/%F0%9D%90%92%F0%9D%90%80%F0%9D%90%80%F0%9D%90%91%F0%9D%90%82-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%A6%F0%9D%90%A8%F0%9D%90%AD%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%A0-%F0%9D%90%83%F0%9D%90%A2/",
   },
@@ -102,7 +93,11 @@ function PaperCard({ paper }: { paper: Paper }) {
         <div className="mt-3 text-sm font-semibold leading-snug">{paper.title}</div>
         <div className="mt-1 text-xs text-black/60">{paper.location}</div>
 
-        <p className="mt-3 text-sm text-black/70 leading-relaxed flex-1">{paper.abstract}</p>
+        {paper.abstract ? (
+          <p className="mt-3 text-sm text-black/70 leading-relaxed flex-1">{paper.abstract}</p>
+        ) : (
+          <div className="flex-1" />
+        )}
 
         {paper.href ? (
           <a
@@ -126,7 +121,7 @@ export default function Research() {
         Research & publications
       </h2>
       <p className="mt-2 text-sm text-black/70 max-w-2xl">
-        Peer-reviewed and conference-presented papers from The Archivist and Helixra's research
+        Peer-reviewed and conference-presented papers from The Archivist and Helixra&apos;s research
         programme.
       </p>
 

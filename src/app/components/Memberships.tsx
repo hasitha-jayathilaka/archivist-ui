@@ -1,15 +1,17 @@
 "use client";
 
 /*
-  TODO: drop real logo files into /public/images/memberships/:
-    - lexra.png
-    - igda.png
+  Compact membership badges (smaller than the Partners/Supporters cards
+  by design — this section is meant to read as a quick badge strip).
+
+  Logo files expected at:
+    /public/images/memberships/lexra.png
+    /public/images/memberships/igda.png
 */
 
 type Membership = {
   name: string;
   role: string;
-  desc: string;
   logo: string;
 };
 
@@ -18,22 +20,18 @@ const MEMBERSHIPS: Membership[] = [
     name: "LEXRA",
     role: "Operator Member",
     logo: "/images/memberships/lexra.png",
-    desc:
-      "Yellow House Productions is an operator member of the Location-Based XR Association (LEXRA) — the first operator from Sri Lanka to join.",
   },
   {
     name: "IGDA",
     role: "Founder Member",
     logo: "/images/memberships/igda.png",
-    desc:
-      "Founder membership with the International Game Developers Association (IGDA).",
   },
 ];
 
-function MembershipCard({ m }: { m: Membership }) {
+function MembershipBadge({ m }: { m: Membership }) {
   return (
-    <div className="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
-      <div className="aspect-[16/10] bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center">
+    <div className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white shadow-sm pl-2 pr-4 py-2">
+      <div className="h-8 w-8 rounded-full bg-black/5 flex items-center justify-center overflow-hidden shrink-0">
         <img
           src={m.logo}
           alt={`${m.name} logo`}
@@ -44,14 +42,13 @@ function MembershipCard({ m }: { m: Membership }) {
             if (fallback) fallback.style.display = "block";
           }}
         />
-        <div style={{ display: "none" }} className="text-sm font-medium text-black/50">
-          {m.name}
+        <div style={{ display: "none" }} className="text-[9px] font-medium text-black/50">
+          {m.name.slice(0, 3)}
         </div>
       </div>
-      <div className="p-5">
-        <div className="text-sm font-semibold">{m.name}</div>
-        <div className="mt-1 text-xs text-black/60">{m.role}</div>
-        <p className="mt-3 text-sm text-black/70 leading-relaxed">{m.desc}</p>
+      <div className="leading-tight">
+        <div className="text-xs font-semibold">{m.name}</div>
+        <div className="text-[11px] text-black/60">{m.role}</div>
       </div>
     </div>
   );
@@ -59,15 +56,12 @@ function MembershipCard({ m }: { m: Membership }) {
 
 export default function Memberships() {
   return (
-    <section id="memberships" className="mx-auto max-w-6xl px-4 py-12">
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Memberships</h2>
-      <p className="mt-2 text-sm text-black/70 max-w-2xl">
-        Industry associations Yellow House Productions is affiliated with.
-      </p>
+    <section id="memberships" className="mx-auto max-w-6xl px-4 py-8">
+      <h2 className="text-xl font-semibold tracking-tight">Memberships</h2>
 
-      <div className="mt-6 grid sm:grid-cols-2 gap-4">
+      <div className="mt-4 flex flex-wrap gap-3">
         {MEMBERSHIPS.map((m) => (
-          <MembershipCard key={m.name} m={m} />
+          <MembershipBadge key={m.name} m={m} />
         ))}
       </div>
     </section>

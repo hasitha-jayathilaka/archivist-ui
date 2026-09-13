@@ -70,11 +70,11 @@ const UPDATES: UpdateItem[] = [
       "Yellow House Productions joined the Location-Based XR Association (LEXRA) as an operator member — the first operator from Sri Lanka to join.",
   },
   {
-    date: "2026-01-18",
-    tag: "Build",
-    title: "Joseph Ginoux character reconstruction (Arles, 1888)",
+    date: "2026-06-11",
+    tag: "Launch",
+    title: "Helixra launched on International Day of Play",
     body:
-      "Added an evidence-bound 3D character showcase built from primary painting references, with an interactive rotatable model and reference panel.",
+      "Helixra, the studio's free-to-play cultural preservation game franchise for Sri Lanka's traditional games, launched to coincide with International Day of Play (11 June).",
   },
 ];
 

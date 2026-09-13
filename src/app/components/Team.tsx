@@ -58,33 +58,6 @@ const TeamCard = ({
   </div>
 );
 
-const PartnerCard = ({
-  name,
-  role,
-  desc,
-  image,
-}: {
-  name: string;
-  role: string;
-  desc: string;
-  image?: string | null;
-}) => (
-  <div className="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
-    <div className="aspect-[16/10] bg-gradient-to-br from-black/5 to-black/10 overflow-hidden flex items-center justify-center">
-      {image ? (
-        <img src={image} alt={name} className="max-h-[80%] max-w-[80%] object-contain" />
-      ) : (
-        <div className="text-xs text-black/40">Logo placeholder</div>
-      )}
-    </div>
-    <div className="p-5">
-      <div className="text-sm font-semibold">{name}</div>
-      <div className="mt-1 text-xs text-black/60">{role}</div>
-      <p className="mt-3 text-sm text-black/70 leading-relaxed">{desc}</p>
-    </div>
-  </div>
-);
-
 /* ---------- Main Section ---------- */
 
 export default function Team() {
@@ -120,6 +93,16 @@ export default function Team() {
               While the core vision and direction remain in-house, Yellow House Productions collaborates with a
               distributed network of concept artists, technical artists, and sound designers through its development
               arm, <strong>The ROI Firm</strong>.
+            </p>
+
+            <p className="mt-3 text-sm text-black/70 leading-relaxed max-w-3xl">
+              Yellow House Productions&apos; commercialisation pathway has been validated by Sri Lanka&apos;s{" "}
+              <strong>National Innovation Agency (NIA)</strong>, where it is a recipient of the{" "}
+              <strong>NIA Innovation Voucher</strong>, and by its status as an{" "}
+              <strong>operator member of LEXRA</strong> (Location-Based XR Association) — the first operator from Sri
+              Lanka to join. The studio works closely with its sister company,{" "}
+              <strong>Linseed</strong>, which provides the IP licensing and attribution infrastructure underpinning
+              Yellow House&apos;s cultural content and institutional partnerships.
             </p>
           </div>
 
@@ -161,7 +144,7 @@ export default function Team() {
 
                 {/* Compact tags */}
                 <div className="mt-4 grid grid-cols-2 gap-2 text-[11px]">
-                  {["Culture-Tech", "EdTech", "VR + Desktop", "Research-led"].map((t) => (
+                  {["Culture-Tech", "EdTech", "VR + Desktop", "Research-led", "NIA Voucher", "LEXRA Operator"].map((t) => (
                     <div
                       key={t}
                       className="rounded-xl border border-black/10 bg-white px-3 py-2 text-black/70 text-center"
@@ -210,38 +193,6 @@ export default function Team() {
           role="Engineering & Immersive Systems"
           image="/images/team/cto.jpg"
           desc="Responsible for technical architecture, immersive systems, and scalable deployment across VR and desktop platforms. Supports institutional reliability and performance."
-        />
-      </div>
-
-      {/* ---------- Collaborators & Ecosystem Partners ---------- */}
-      <h3 className="mt-12 text-xl font-semibold tracking-tight">
-        Collaborators & ecosystem partners
-      </h3>
-      <p className="mt-2 text-sm text-black/70 max-w-2xl">
-        Independent collaborators, advisors, and institutions contributing to research integrity, production workflows,
-        and cultural authenticity.
-      </p>
-
-      <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <PartnerCard
-          name="Alain Amiel"
-          role="Cultural & Historical Advisor - Arles"
-          image="/images/advisors/alain-amiel.jpg"
-          desc="Provides cultural and historical insight supporting the reconstruction of Arles (1888), contributing local context, historical accuracy, and interpretive depth."
-        />
-
-        <PartnerCard
-          name="The ROI Firm"
-          role="Development & Production Partner"
-          image="/images/partners/roi-firm.png"
-          desc="The ROI Firm supports Archivist Into the Artverse™ through production coordination, technical development workflows, and access to a global network of creative and technical specialists engaged on a project-by-project basis."
-        />
-
-        <PartnerCard
-          name="Art Institute of Chicago"
-          role="Permission Granted"
-          image="/images/partners/art-institute-chicago.png"
-          desc="Selected historical maps used in the Arles reconstruction are reproduced with permission from the Art Institute of Chicago, based on materials published in their archival collections."
         />
       </div>
     </section>
